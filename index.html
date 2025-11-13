@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="icon" type="image/webp" href="image/weather-2017-06-19.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Weather Card -->
+        <div class="main-card">
+            <div class="date-location">
+                <div class="day" id="currentDay">Tuesday</div>
+                <div class="date" id="currentDate">20 Jun 2022</div>
+                <div class="location">
+                    <svg class="location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span id="locationName">Biarritz, FR</span>
+                </div>
+            </div>
+
+            <div class="current-weather">
+                <svg class="weather-icon-large" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                </svg>
+                <div class="temperature" id="mainTemp">29 °C</div>
+                <div class="condition" id="mainCondition">Sunny</div>
+            </div>
+        </div>
+
+        <!-- Details Card -->
+        <div class="details-card">
+            <div class="weather-details">
+                <div class="detail-row">
+                    <span class="detail-label">PRECIPITATION</span>
+                    <span class="detail-value" id="precipitation">0%</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">HUMIDITY</span>
+                    <span class="detail-value" id="humidity">42%</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">WIND</span>
+                    <span class="detail-value" id="wind">3 km/h</span>
+                </div>
+            </div>
+
+            <div class="forecast">
+                <div class="forecast-day active">
+                    <div class="day-name">Tue</div>
+                    <div class="forecast-icon">☀️</div>
+                    <div class="forecast-temp">30 °C</div>
+                </div>
+
+                <div class="forecast-day">
+                    <div class="day-name">Wed</div>
+                    <div class="forecast-icon">🌤️</div>
+                    <div class="forecast-temp">22 °C</div>
+                </div>
+
+                <div class="forecast-day">
+                    <div class="day-name">Thu</div>
+                    <div class="forecast-icon">🌧️</div>
+                    <div class="forecast-temp">16 °C</div>
+                </div>
+
+                <div class="forecast-day">
+                    <div class="day-name">Fri</div>
+                    <div class="forecast-icon">☀️</div>
+                    <div class="forecast-temp">26 °C</div>
+                </div>
+            </div>
+
+            <button class="change-location-btn" id="changeLocationBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                Change Location
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="locationModal">
+        <div class="modal-content">
+            <h2>Change Location</h2>
+            <input type="text" id="cityInput" placeholder="Enter city name..." />
+            <div class="modal-buttons">
+                <button class="btn-primary" id="searchBtn">Search</button>
+                <button class="btn-secondary" id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
