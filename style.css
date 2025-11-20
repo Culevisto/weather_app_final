@@ -303,74 +303,164 @@ body {
         font-size: 24px;
     }
 }
-/* ----- MOBILE FIXES ----- */
+/* ====== АДАПТИВ ДЛЯ МОБИЛЬНЫХ, НЕ МЕНЯЯ МАКЕТ ====== */
+
+/* Телефоны до 480px */
 @media (max-width: 480px) {
 
-    /* Контейнер — растягиваем полностью по ширине */
-    .container {
-        width: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-    }
+  .container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 10px;
+  }
 
-    /* Главная карточка */
-    .main-card {
-        width: 100%;
-        padding: 15px;
-    }
+  .main-card,
+  .details-card {
+    padding: 18px;
+    border-radius: 16px;
+    width: 100%;
+  }
 
-    .date-location .day,
-    .date-location .date,
-    .date-location .location {
-        font-size: 14px;
-    }
+  .day {
+    font-size: 26px;
+  }
 
-    .weather-icon-large {
-        width: 70px;
-        height: 70px;
-    }
+  .date {
+    font-size: 14px;
+  }
 
-    .temperature {
-        font-size: 36px;
-    }
+  .location {
+    font-size: 14px;
+  }
 
-    .condition {
-        font-size: 18px;
-    }
+  .weather-icon-large {
+    width: 110px;
+    margin-bottom: -10px;
+  }
 
-    /* Детали */
-    .details-card {
-        width: 100%;
-        padding: 15px;
-        margin-top: 15px;
-    }
+  .temperature {
+    font-size: 48px;
+  }
 
-    .detail-row {
-        font-size: 14px;
-    }
+  .condition {
+    font-size: 20px;
+  }
 
-    /* Блок прогноза */
-    .forecast {
-        gap: 8px;
-    }
+  .detail-label {
+    font-size: 16px;
+  }
 
-    .forecast-day {
-        flex: 1;
-        padding: 8px;
-    }
+  .detail-value {
+    font-size: 14px;
+  }
 
-    .forecast-temp {
-        font-size: 14px;
-    }
+  .forecast {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 
-    /* Модалка */
-    .modal-content {
-        width: 90%;
-        padding: 15px;
-    }
+  .forecast-day {
+    flex: 1 1 45%;
+    padding: 14px;
+  }
 
-    input#cityInput {
-        font-size: 16px;
-    }
+  .forecast-icon {
+    font-size: 20px;
+  }
+
+  .forecast-temp {
+    font-size: 14px;
+  }
+
+  .change-location-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* Модалка */
+  .modal-content {
+    width: 92%;
+    padding: 16px;
+  }
+
+  #cityInput {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
 
+/* Очень маленькие телефоны (360px и ниже) */
+@media (max-width: 360px) {
+  .temperature {
+    font-size: 42px;
+  }
+  .weather-icon-large {
+    width: 90px;
+  }
+  .forecast-day {
+    flex: 1 1 48%;
+    padding: 12px;
+  }
+}
+/* ===== FIX: Адаптив главной карточки для мобильных ===== */
+@media (max-width: 480px) {
+  
+  /* Главная карточка */
+  .main-card {
+    padding: 16px 20px;
+  }
+
+  /* Иконка погоды — уменьшаем */
+  .weather-icon-large {
+    width: 80px !important;
+    margin-bottom: -6px;
+  }
+
+  /* Температура — уменьшаем, чтобы не пересекалась */
+  #mainTemp {
+    font-size: 42px !important;
+    line-height: 1;
+  }
+
+  /* Основное состояние — уменьшение */
+  #mainCondition {
+    font-size: 20px !important;
+  }
+
+  /* Блок с температурой и иконкой — ставим вертикально */
+  .current-weather {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Текст слева, иконка справа — чтобы не пересекались */
+  .current-weather > div {
+    flex: 1;
+  }
+
+  /* Город + страна — уменьшить, чтобы не ломало строку */
+  #locationName {
+    font-size: 14px !important;
+  }
+}
+
+/* Очень маленькие телефоны: iPhone SE, 360px */
+@media (max-width: 360px) {
+
+  .weather-icon-large {
+    width: 70px !important;
+  }
+
+  #mainTemp {
+    font-size: 36px !important;
+  }
+
+  #mainCondition {
+    font-size: 18px !important;
+  }
+
+  .main-card {
+    padding: 14px 16px;
+  }
+}
