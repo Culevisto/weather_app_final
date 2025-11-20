@@ -1,7 +1,7 @@
 // ===== Weather App (Upgraded) =====
 // Made for your current HTML & CSS layout
 
-const API_KEY = 'f14a962b738ce850ae61fa2e34a19f98'; // 🔹 ВСТАВЬ СВОЙ КЛЮЧ OpenWeatherMap
+const API_KEY = 'f14a962b738ce850ae61fa2e34a19f98'; 
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 const FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast';
 
@@ -136,7 +136,7 @@ function updateDateTime() {
 function updateWeatherDisplay() {
   const c = weatherData.current;
   locationName.textContent = `${c.city}, ${c.country}`;
-  mainTemp.textContent = `${c.temp} °C`;
+mainTemp.textContent = `${c.temp}\u00A0°C`;
   mainCondition.textContent = c.condition;
   precipitation.textContent = `${c.precipitation}%`;
   humidity.textContent = `${c.humidity}%`;
@@ -158,23 +158,25 @@ function updateForecastDisplay() {
 // ===== Forecast Data Parser =====
 function processForecastData(list) {
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const uniqueDays = [];
-  const seen = new Set();
+  const dailyMap = {};
 
-  for (const item of list) {
+  list.forEach(item => {
     const date = new Date(item.dt * 1000);
     const dayName = days[date.getDay()];
-    const dateKey = date.toDateString();
-    if (!seen.has(dateKey) && uniqueDays.length < 4) {
-      seen.add(dateKey);
-      uniqueDays.push({
+    const hour = date.getHours();
+
+    // Выбираем прогноз ближе к 12:00
+    if (!dailyMap[dayName] || Math.abs(hour - 12) < Math.abs(dailyMap[dayName].hour - 12)) {
+      dailyMap[dayName] = {
         day: dayName,
         temp: Math.round(item.main.temp),
-        condition: item.weather[0].main
-      });
+        condition: item.weather[0].main,
+        hour: hour
+      };
     }
-  }
-  return uniqueDays;
+  });
+
+  return Object.values(dailyMap).slice(1, 5); // 4 дня, начиная со следующего
 }
 
 // ===== Weather Icons =====
