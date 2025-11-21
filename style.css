@@ -464,3 +464,32 @@ body {
     padding: 14px 16px;
   }
 }
+/* ===== АДАПТИВ ДЛЯ ПЛАНШЕТОВ И 2-в-1 УСТРОЙСТВ ===== */
+
+/* iPad Air/Surface Pro/Zenbook Fold — 820px..1366px */
+@media (min-width: 820px) and (max-width: 1366px) {
+
+  /* Разрешаем перенос карточек прогноза */
+  .forecast {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  /* Каждая карточка прогноза становится адаптивной */
+  .forecast-day {
+    flex: 1 1 calc(25% - 8px); /* 4 в ряд */
+    min-width: 150px;
+  }
+}
+
+/* Узкие планшеты — 600px..820px */
+@media (min-width: 600px) and (max-width: 820px) {
+  .forecast {
+    flex-wrap: wrap;
+  }
+
+  .forecast-day {
+    flex: 1 1 calc(33.33% - 8px); /* 3 в ряд */
+    min-width: 160px;
+  }
+}
